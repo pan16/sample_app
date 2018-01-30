@@ -12,6 +12,9 @@ SampleApp::Application.routes.draw do
   resources :microposts, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
   resources :premiumusers
+  match 'premiumuser/login', to: 'premiumuser_sessions#new', via: 'get'
+  match 'premiumuser/login', to: 'premiumuser_sessions#create', via: 'post'
+  match 'premiumuser/logout', to: 'premiumuser_sessions#destroy', via: 'delete'
   match '/help',    to: 'static_pages#help',    via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
